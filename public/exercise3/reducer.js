@@ -10,6 +10,14 @@ let initialState = {
 
 // This reducer isn't pure! Fix it plz
 const reducer = (state = initialState, action) => {
+
+	let stateCopy = {
+		...state,
+		todos: state.todos.map((currentItem) => {
+			return {...currentItem}
+		})
+	};
+
 	if (action.type == "ADD_TODO") {
 		state.todos.push({
 			text: action.todoText,
